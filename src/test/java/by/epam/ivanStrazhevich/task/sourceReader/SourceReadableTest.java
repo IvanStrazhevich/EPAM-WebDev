@@ -6,8 +6,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-
 public class SourceReadableTest {
     private static final String DEFAULT_DATA_SOURCE = "/Users/ivanstrazhevich/Desktop/data.txt";
     private static final String RESERVED_DATA_SOURCE = "/Users/ivanstrazhevich/Desktop/IdeaProjects/webDev/data/data.txt";
@@ -29,7 +27,7 @@ public class SourceReadableTest {
     @Test
     public void testReadSourceReturnsList() {
         try {
-            Assert.assertNotNull((ArrayList<String>) reader.readSource(dataSource));
+            Assert.assertNotNull(reader.readSource(dataSource));
         } catch (ExtendedException e) {
             e.printStackTrace();
         }

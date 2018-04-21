@@ -6,10 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class PlaneCalculation implements Planeable{
-    static Logger logger = LogManager.getLogger(PlaneCalculation.class.getName());
+    static Logger logger = LogManager.getLogger();
 
     public double countAngle(Plane plane) {
-        logger.log(Level.ALL, "Green-green, Yello");
+        logger.info( "Green-green, Yello");
 
         return 0;
 

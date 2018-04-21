@@ -1,6 +1,8 @@
 package by.epam.ivanStrazhevich.task.factory;
 
-public class PointFactory {
+import by.epam.ivanStrazhevich.task.entity.Figure;
+
+public class PointFactory implements FigureFactory{
     private PointFactory() {
     }
 
@@ -13,4 +15,8 @@ public class PointFactory {
         return instance;
     }
 
+    @Override
+    public Figure createFigure(String figureData) {
+        return null;
+    }
 }

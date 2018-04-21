@@ -1,6 +1,6 @@
 package by.epam.ivanStrazhevich.task.entity;
 
-public class Plane {
+public class Plane implements Figure {
     private Point a;
     private Point b;
     private Point c;
@@ -38,6 +38,7 @@ public class Plane {
         this.c = c;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,6 +67,8 @@ public class Plane {
                 ", c = " + c +
                 " } ";
     }
+
+
 }
 
 

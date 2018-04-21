@@ -1,6 +1,6 @@
 package by.epam.ivanStrazhevich.task.entity;
 
-public class Point {
+public class Point implements Figure {
     private double x;
     private double y;
     private double z;
@@ -13,6 +13,7 @@ public class Point {
 
     public Point() {
     }
+
 
     public double getX() {
         return x;
