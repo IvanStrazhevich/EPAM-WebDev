@@ -1,6 +1,5 @@
 package by.epam.ivanStrazhevich.task;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
@@ -9,13 +8,14 @@ import java.io.*;
 import java.sql.SQLException;
 
 public class LogTest {
-        static Logger logger = LogManager.getLogger();
-@Test
-        public void checkLogs()throws IOException,SQLException{
-            logger.debug("This is a debug message");
-            logger.info("This is an info message");
-            logger.warn("This is a warn message");
-            logger.error("This is an error message");
-            logger.fatal("This is a fatal message");
-        }
+    static Logger logger = LogManager.getLogger();
+
+    @Test
+    public void checkLogs() throws IOException, SQLException {
+        logger.debug("This is a debug message");
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
+        logger.fatal("This is a fatal message");
+    }
 }

@@ -12,23 +12,43 @@ import java.util.regex.Pattern;
 public class SourceParserFromList<T> implements SourceParsable<ArrayList<String>> {
     Logger logger = LogManager.getLogger();
     private static final String POINT_COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
+    private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)?";
 
     @Override
-    public ArrayList<Double> parsePointDataToCoordinatesList(ArrayList<String> dotsForPlaneList) {
-        ArrayList<Double> dotCoordinatesList = new ArrayList<>();
+    public ArrayList<String> excludeWrongDataFromList(ArrayList<String> dotsForPlaneList) {
+        ArrayList<String> dotCoordinatesList = new ArrayList<>();
         SourceValidatable<ArrayList<String>> sourceValidator = new SourceValidator<>();
-        if (dotsForPlaneList != null && sourceValidator.validateSourceList(dotsForPlaneList)) {
-            Pattern pattern = Pattern.compile(POINT_COORDINATE_PATTERN);
-
-            for (String dotsForPlane : dotsForPlaneList
-                    ) {
-                Matcher matcher = pattern.matcher(dotsForPlane);
-                while (matcher.find()) {
-                    dotCoordinatesList.add(Double.parseDouble(matcher.group()));
+        Pattern pattern = Pattern.compile(POINT_COORDINATE_PATTERN);
+        if (dotsForPlaneList != null) {
+                for (String dotsForPlane : dotsForPlaneList
+                        ) {
+                    if (sourceValidator.validateCorrectLinePointsForPlane(dotsForPlane)) {
+                        Matcher matcher = pattern.matcher(dotsForPlane);
+                        StringBuffer dot = new StringBuffer();
+                        while (matcher.find()) {
+                            dot.append(matcher.group());
+                        }
+                        dotCoordinatesList.add(dot.toString());
+                    }
                 }
             }
-        }
-        logger.debug(dotCoordinatesList);
+        logger.debug(dotCoordinatesList + " Parser result");
         return dotCoordinatesList;
+    }
+
+    @Override
+    public ArrayList<String> createDotData(ArrayList<String> planeDataList) {
+        ArrayList<String> dotList= new ArrayList<>();
+        Pattern pattern = Pattern.compile(POINT_PATTERN);
+        for (String planeData:planeDataList
+             ) {
+                 Matcher matcher = pattern.matcher(planeData);
+                while (matcher.find()){
+                    String dot = matcher.group();
+                    dotList.add(dot);
+             }
+        }
+        logger.debug(dotList);
+        return dotList;
     }
 }

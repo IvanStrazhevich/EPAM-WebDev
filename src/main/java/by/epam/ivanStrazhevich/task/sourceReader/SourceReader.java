@@ -25,7 +25,7 @@ public class SourceReader<T> implements SourceReadable<ArrayList<String>> {
                 logger.error("Source file problem", e);
                 throw new ExtendedException("Source file problem", e);
             }
-            logger.debug(planeDataList);
+            logger.debug(planeDataList+" Sourse reader result");
         }
         return planeDataList;
     }
