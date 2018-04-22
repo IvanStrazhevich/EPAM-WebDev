@@ -11,6 +11,7 @@ public class SourceValidator<T> implements SourceValidatable<ArrayList<String>> 
             "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s" +
             "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)";
     private static final String POINT_COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
+    private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?";
 
     @Override
     public boolean validateSourceList(ArrayList<String> dataSourceList) {
@@ -35,6 +36,11 @@ public class SourceValidator<T> implements SourceValidatable<ArrayList<String>> 
     public boolean validateCoordinateDataForPoint(String coordinate) {
         logger.debug(coordinate + " Dot coordinate validator");
         return coordinate.matches(POINT_COORDINATE_PATTERN);
+    }
+    @Override
+    public boolean validateDataForPoint(String dot) {
+        logger.debug(dot + " Dot coordinate validator");
+        return dot.matches(POINT_PATTERN);
     }
 
 }

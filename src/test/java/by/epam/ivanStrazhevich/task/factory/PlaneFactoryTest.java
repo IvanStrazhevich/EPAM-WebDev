@@ -18,7 +18,7 @@ public class PlaneFactoryTest {
     Plane expected;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp() throws ExtendedException {
         pointFactory = PointFactory.getInstance();
         Point pointA = pointFactory.createFigure(CORRECT_POINT_A_LINE);
         Point pointB = pointFactory.createFigure(CORRECT_POINT_B_LINE);

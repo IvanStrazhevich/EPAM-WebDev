@@ -28,7 +28,7 @@ public class PointFactory implements FigureFactory {
     @Override
     public Point createFigure(String dataSource) throws ExtendedException {
         sourceValidator = new SourceValidator();
-        if (dataSource!=null && sourceValidator.validateCoordinateDataForPoint(dataSource)) {
+        if (dataSource!=null && sourceValidator.validateDataForPoint(dataSource)) {
             String[] arrayData = dataSource.split("\\s");
             logger.debug(Arrays.toString(arrayData));
             Point point = new Point(Double.parseDouble(arrayData[0]), Double.parseDouble(arrayData[1]), Double.parseDouble(arrayData[2]));

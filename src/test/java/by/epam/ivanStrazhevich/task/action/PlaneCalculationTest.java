@@ -1,24 +1,28 @@
 package by.epam.ivanStrazhevich.task.action;
 
-import by.epam.ivanStrazhevich.task.entity.Plane;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
 
 public class PlaneCalculationTest {
 
-    @Test
-    public void testCountAngle() {
-        PlaneCalculation planeCalculation = new PlaneCalculation();
-        Plane plane = new Plane();
-        planeCalculation.countAngle(plane);
+    @BeforeMethod
+    public void setUp(){
+    }
+
+    @AfterMethod
+    public void tearDown(){
     }
 
     @Test
-    public void testCheckIfPlane() {
+    public void testCountAngleToAxis(){
     }
 
     @Test
-    public void testCheckIfPlanePerpendicularDatumLine() {
+    public void testCheckIfThreeDotsIsPlane(){
+    }
+
+    @Test
+    public void testCheckIfPlanePerpendicularDatumLine1(){
     }
 }

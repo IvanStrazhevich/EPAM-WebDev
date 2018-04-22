@@ -1,6 +1,7 @@
 package by.epam.ivanStrazhevich.task.factory;
 
 import by.epam.ivanStrazhevich.task.entity.Point;
+import by.epam.ivanStrazhevich.task.exception.ExtendedException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,7 +25,7 @@ public class PointFactoryTest {
     }
 
     @Test
-    public void testCreateFigure() throws Exception {
+    public void testCreateFigure() throws ExtendedException {
         Point actual = pointfactory.createFigure(CORRECT_POINT_LINE);
         Assert.assertEquals(actual, expected);
     }
