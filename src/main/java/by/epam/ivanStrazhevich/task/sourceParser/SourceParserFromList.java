@@ -20,35 +20,35 @@ public class SourceParserFromList<T> implements SourceParsable<ArrayList<String>
         SourceValidatable<ArrayList<String>> sourceValidator = new SourceValidator<>();
         Pattern pattern = Pattern.compile(POINT_COORDINATE_PATTERN);
         if (dotsForPlaneList != null) {
-                for (String dotsForPlane : dotsForPlaneList
-                        ) {
-                    if (sourceValidator.validateCorrectLinePointsForPlane(dotsForPlane)) {
-                        Matcher matcher = pattern.matcher(dotsForPlane);
-                        StringBuffer dot = new StringBuffer();
-                        while (matcher.find()) {
-                            dot.append(matcher.group());
-                        }
-                        dotCoordinatesList.add(dot.toString());
+            for (String dotsForPlane : dotsForPlaneList
+                    ) {
+                if (sourceValidator.validateCorrectLinePointsForPlane(dotsForPlane)) {
+                    Matcher matcher = pattern.matcher(dotsForPlane);
+                    StringBuffer dot = new StringBuffer();
+                    while (matcher.find()) {
+                        dot.append(matcher.group());
                     }
+                    dotCoordinatesList.add(dot.toString());
                 }
             }
-        logger.debug(dotCoordinatesList + " Parser result");
+        }
+        logger.debug(dotCoordinatesList + " Parser to planes result");
         return dotCoordinatesList;
     }
 
     @Override
     public ArrayList<String> createDotData(ArrayList<String> planeDataList) {
-        ArrayList<String> dotList= new ArrayList<>();
+        ArrayList<String> dotList = new ArrayList<>();
         Pattern pattern = Pattern.compile(POINT_PATTERN);
-        for (String planeData:planeDataList
-             ) {
-                 Matcher matcher = pattern.matcher(planeData);
-                while (matcher.find()){
-                    String dot = matcher.group();
-                    dotList.add(dot);
-             }
+        for (String planeData : planeDataList
+                ) {
+            Matcher matcher = pattern.matcher(planeData);
+            while (matcher.find()) {
+                String dot = matcher.group();
+                dotList.add(dot);
+            }
         }
-        logger.debug(dotList);
+        logger.debug(dotList + " Parser to dots result");
         return dotList;
     }
 }
