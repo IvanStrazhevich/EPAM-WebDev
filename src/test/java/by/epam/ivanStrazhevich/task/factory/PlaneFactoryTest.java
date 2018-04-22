@@ -2,6 +2,7 @@ package by.epam.ivanStrazhevich.task.factory;
 
 import by.epam.ivanStrazhevich.task.entity.Plane;
 import by.epam.ivanStrazhevich.task.entity.Point;
+import by.epam.ivanStrazhevich.task.exception.ExtendedException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,7 +36,12 @@ public class PlaneFactoryTest {
 
     @Test
     public void testCreateFigure() {
-        Plane actual = planeFactory.createFigure(CORRECT_PLANE_LINE);
+        Plane actual = null;
+        try {
+            actual = planeFactory.createFigure(CORRECT_PLANE_LINE);
+        } catch (ExtendedException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals(actual, expected);
     }
 }

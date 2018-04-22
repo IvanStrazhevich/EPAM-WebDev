@@ -50,6 +50,6 @@ public class SourceParserFromListTest {
         } catch (ExtendedException e) {
             e.printStackTrace();
         }
-        Assert.assertNotNull(parser.createDotData(parser.excludeWrongDataFromList(planeDotsList)));
+        Assert.assertNotNull(parser.createDotDataFromList(parser.excludeWrongDataFromList(planeDotsList)));
     }
 }

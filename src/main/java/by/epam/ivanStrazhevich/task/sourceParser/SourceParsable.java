@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public interface SourceParsable<T> {
     ArrayList<String> excludeWrongDataFromList(T dataSource);
-    ArrayList<String> createDotData(ArrayList<String> planeDataList);
+    ArrayList<String> createDotDataFromList(T planeDataList);
+    ArrayList<String> createDotDataFromString(String planeDataList);
+
 }
 

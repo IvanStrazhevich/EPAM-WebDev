@@ -37,7 +37,7 @@ public class SourceParserFromList<T> implements SourceParsable<ArrayList<String>
     }
 
     @Override
-    public ArrayList<String> createDotData(ArrayList<String> planeDataList) {
+    public ArrayList<String> createDotDataFromList(ArrayList<String> planeDataList) {
         ArrayList<String> dotList = new ArrayList<>();
         Pattern pattern = Pattern.compile(POINT_PATTERN);
         for (String planeData : planeDataList
@@ -48,6 +48,19 @@ public class SourceParserFromList<T> implements SourceParsable<ArrayList<String>
                 dotList.add(dot);
             }
         }
+        logger.debug(dotList + " Parser to dots result");
+        return dotList;
+    }
+
+    @Override
+    public ArrayList<String> createDotDataFromString(String planeData) {
+        ArrayList<String> dotList = new ArrayList<>();
+        Pattern pattern = Pattern.compile(POINT_PATTERN);
+            Matcher matcher = pattern.matcher(planeData);
+            while (matcher.find()) {
+                String dot = matcher.group();
+                dotList.add(dot);
+            }
         logger.debug(dotList + " Parser to dots result");
         return dotList;
     }
