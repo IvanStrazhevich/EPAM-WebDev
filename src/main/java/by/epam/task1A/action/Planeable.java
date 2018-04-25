@@ -1,7 +1,7 @@
-package by.epam.task.action;
+package by.epam.task1A.action;
 
-import by.epam.task.entity.Plane;
-import by.epam.task.entity.Point;
+import by.epam.task1A.entity.Plane;
+import by.epam.task1A.entity.Point;
 
 
 public interface Planeable {

@@ -1,6 +1,6 @@
-package by.epam.task.sourceReader;
+package by.epam.task1A.reader;
 
-import by.epam.task.exception.ExtendedException;
+import by.epam.task1A.exception.ExtendedException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +26,9 @@ public class SourceReader<T> implements SourceReadable<ArrayList<String>> {
                 throw new ExtendedException(" Source file problem", e);
             }
             logger.debug(planeDataList + " Sourse reader result");
+        } else {
+            logger.error("Null data source");
+            throw new ExtendedException("Null data source");
         }
         return planeDataList;
     }

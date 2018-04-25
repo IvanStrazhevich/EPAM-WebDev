@@ -1,4 +1,4 @@
-package by.epam.task.exception;
+package by.epam.task1A.exception;
 
 public class ExtendedException extends Exception {
     public ExtendedException() {

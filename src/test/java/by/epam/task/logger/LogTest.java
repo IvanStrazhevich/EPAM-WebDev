@@ -1,4 +1,4 @@
-package by.epam.task;
+package by.epam.task.logger;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,8 +1,10 @@
 package by.epam.task.validator;
 
-import by.epam.task.exception.ExtendedException;
-import by.epam.task.sourceReader.SourceReadable;
-import by.epam.task.sourceReader.SourceReader;
+import by.epam.task1A.exception.ExtendedException;
+import by.epam.task1A.reader.SourceReadable;
+import by.epam.task1A.reader.SourceReader;
+import by.epam.task1A.validator.SourceValidatable;
+import by.epam.task1A.validator.SourceValidator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -41,31 +43,31 @@ public class SourceValidatorTest {
     }
 
     @Test
-    public void testValidateSourceListWithCorrectList() {
+    public void testValidateSourceListWithCorrectListTrue() {
         Assert.assertTrue(sourceValidator.validateSourceList(sourceList));
     }
 
     @Test
-    public void testValidateSourceListWithInCorrectList() {
+    public void testValidateSourceListWithInCorrectListFalse() {
         Assert.assertFalse(sourceValidator.validateSourceList(incorrectSourceList));
     }
 
     @Test
-    public void testValidateSourceListWithCorrectLine() {
+    public void testValidateSourceListWithCorrectLineTrue() {
         Assert.assertTrue(sourceValidator.validateCorrectLinePointsForPlane(CORRECT_LINE));
     }
 
     @Test
-    public void testValidateSourceListWithIncorrectList() {
+    public void testValidateSourceListWithIncorrectListFalse() {
         Assert.assertFalse(sourceValidator.validateCorrectLinePointsForPlane(INCORRECT_LINE));
     }
 
     @Test
-    public void testValidateCoordinateDataForPoint() {
+    public void testValidateCoordinateDataForPointTrue() {
         Assert.assertTrue(sourceValidator.validateCoordinatesForPoint(CORRECT_LINE.substring(0,4)));
     }
     @Test
-    public void testValidateIncorrectCoordinateDataForPoint() {
+    public void testValidateIncorrectCoordinateDataForPointFalse() {
         Assert.assertFalse(sourceValidator.validateCoordinatesForPoint(INCORRECT_LINE.substring(0,4)));
     }
 }

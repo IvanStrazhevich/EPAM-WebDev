@@ -1,4 +1,4 @@
-package by.epam.task.validator;
+package by.epam.task1A.validator;
 
 
 public interface SourceValidatable<T> {

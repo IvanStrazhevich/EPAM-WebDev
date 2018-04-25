@@ -1,8 +1,10 @@
-package by.epam.task.sourceParser;
+package by.epam.task.parser;
 
-import by.epam.task.exception.ExtendedException;
-import by.epam.task.sourceReader.SourceReadable;
-import by.epam.task.sourceReader.SourceReader;
+import by.epam.task1A.exception.ExtendedException;
+import by.epam.task1A.parser.SourceParsable;
+import by.epam.task1A.parser.SourceParser;
+import by.epam.task1A.reader.SourceReadable;
+import by.epam.task1A.reader.SourceReader;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -44,14 +46,13 @@ public class SourceParserTest {
 
     @Test
     public void testParsePointDataProduceListOfCoordinates() {
-
-        actual=parser.excludeWrongDataFromList(planeDotsList).toString();
+        actual=parser.excludeWrongLineAtPlaneCoordinatesDataFromList(planeDotsList).toString();
         Assert.assertEquals(actual, EXPECTED_PLANE_DATA);
     }
 
     @Test
-    public void testParsePlaneData() {
-        actual = parser.createDotListFromList(parser.excludeWrongDataFromList(planeDotsList)).toString();
+    public void testParsePlaneDataListOfPoints() {
+        actual = parser.createDotListFromList(parser.excludeWrongLineAtPlaneCoordinatesDataFromList(planeDotsList)).toString();
         Assert.assertEquals(actual, EXPECTED_POINTS_DATA);
     }
 }

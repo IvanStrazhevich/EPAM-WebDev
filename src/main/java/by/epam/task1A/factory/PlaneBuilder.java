@@ -1,12 +1,12 @@
-package by.epam.task.factory;
+package by.epam.task1A.factory;
 
-import by.epam.task.entity.Plane;
-import by.epam.task.entity.Point;
-import by.epam.task.exception.ExtendedException;
-import by.epam.task.sourceParser.SourceParsable;
-import by.epam.task.sourceParser.SourceParser;
-import by.epam.task.validator.SourceValidatable;
-import by.epam.task.validator.SourceValidator;
+import by.epam.task1A.entity.Plane;
+import by.epam.task1A.entity.Point;
+import by.epam.task1A.exception.ExtendedException;
+import by.epam.task1A.parser.SourceParsable;
+import by.epam.task1A.parser.SourceParser;
+import by.epam.task1A.validator.SourceValidatable;
+import by.epam.task1A.validator.SourceValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

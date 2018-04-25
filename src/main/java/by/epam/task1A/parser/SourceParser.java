@@ -1,7 +1,7 @@
-package by.epam.task.sourceParser;
+package by.epam.task1A.parser;
 
-import by.epam.task.validator.SourceValidatable;
-import by.epam.task.validator.SourceValidator;
+import by.epam.task1A.validator.SourceValidatable;
+import by.epam.task1A.validator.SourceValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +15,7 @@ public class SourceParser<T> implements SourceParsable<ArrayList<String>> {
     private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)?";
 
     @Override
-    public ArrayList<String> excludeWrongDataFromList(ArrayList<String> dotsForPlaneList) {
+    public ArrayList<String> excludeWrongLineAtPlaneCoordinatesDataFromList(ArrayList<String> dotsForPlaneList) {
         ArrayList<String> dotCoordinatesList = new ArrayList<>();
         SourceValidatable<ArrayList<String>> sourceValidator = new SourceValidator<>();
         Pattern pattern = Pattern.compile(POINT_COORDINATE_PATTERN);

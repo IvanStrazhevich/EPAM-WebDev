@@ -1,4 +1,4 @@
-package by.epam.task.validator;
+package by.epam.task1A.validator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +10,9 @@ public class SourceValidator<T> implements SourceValidatable<ArrayList<String>> 
     private static final String PLANE_POINTS_PATTERN = "^\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s" +
             "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s" +
             "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)";
-    private static final String POINT_COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
     private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?";
+    private static final String COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
+
 
     @Override
     public boolean validateSourceList(ArrayList<String> dataSourceList) {
@@ -33,13 +34,14 @@ public class SourceValidator<T> implements SourceValidatable<ArrayList<String>> 
     }
 
     @Override
-    public boolean validateCoordinatesForPoint(String coordinate) {
-        logger.debug(coordinate + " Dot coordinate validator");
-        return coordinate.matches(POINT_COORDINATE_PATTERN);
-    }
-    @Override
     public boolean validateDataForPoint(String dot) {
         logger.debug(dot + " Dot validator");
         return dot.matches(POINT_PATTERN);
+    }
+
+    @Override
+    public boolean validateCoordinatesForPoint(String coordinate) {
+        logger.debug(coordinate + " Dot coordinate validator");
+        return coordinate.matches(COORDINATE_PATTERN);
     }
 }

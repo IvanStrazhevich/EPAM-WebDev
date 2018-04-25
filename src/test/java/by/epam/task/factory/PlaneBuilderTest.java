@@ -1,8 +1,10 @@
 package by.epam.task.factory;
 
-import by.epam.task.entity.Plane;
-import by.epam.task.entity.Point;
-import by.epam.task.exception.ExtendedException;
+import by.epam.task1A.entity.Plane;
+import by.epam.task1A.entity.Point;
+import by.epam.task1A.exception.ExtendedException;
+import by.epam.task1A.factory.PlaneBuilder;
+import by.epam.task1A.factory.PointBuilder;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
