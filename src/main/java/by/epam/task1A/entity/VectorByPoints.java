@@ -1,6 +1,10 @@
 package by.epam.task1A.entity;
 
-public class VectorByPoints {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class VectorByPoints implements Figure {
+    static Logger logger = LogManager.getLogger();
     private Point pointA;
     private Point pointB;
     private double x;
@@ -16,6 +20,11 @@ public class VectorByPoints {
     }
 
     public VectorByPoints() {
+    }
+
+    @Override
+    public void identifyFigure() {
+        logger.info("Vector is done");
     }
 
     public Point getPointA() {

@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Plane implements Figure {
-    Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     private Point a;
     private Point b;
     private Point c;

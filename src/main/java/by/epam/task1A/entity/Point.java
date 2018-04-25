@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Point implements Figure {
-    Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     private double x;
     private double y;
     private double z;
