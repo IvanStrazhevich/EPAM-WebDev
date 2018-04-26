@@ -1,8 +1,6 @@
-package by.epam.task.parser;
+package by.epam.task1A.parser;
 
 import by.epam.task1A.exception.ExtendedException;
-import by.epam.task1A.parser.SourceParsable;
-import by.epam.task1A.parser.SourceParser;
 import by.epam.task1A.reader.SourceReadable;
 import by.epam.task1A.reader.SourceReader;
 import org.testng.Assert;

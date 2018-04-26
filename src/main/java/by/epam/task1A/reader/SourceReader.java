@@ -22,15 +22,14 @@ public class SourceReader<T> implements SourceReadable<ArrayList<String>> {
             try (Stream<String> lines = Files.lines(path)) {
                 planeDataList = (ArrayList) lines.collect(Collectors.toList());
             } catch (IOException e) {
-                logger.error(" Source file problem", e);
                 throw new ExtendedException(" Source file problem", e);
             }
             logger.debug(planeDataList + " Sourse reader result");
+            return planeDataList;
         } else {
-            logger.error("Null data source");
             throw new ExtendedException("Null data source");
         }
-        return planeDataList;
+
     }
 
 }

@@ -3,7 +3,7 @@ package by.epam.task1A.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class VectorByPoints implements Figure {
+public class VectorByPoints extends Figure {
     static Logger logger = LogManager.getLogger();
     private Point pointA;
     private Point pointB;
@@ -12,6 +12,7 @@ public class VectorByPoints implements Figure {
     private double z;
 
     public VectorByPoints(Point pointA, Point pointB) {
+        super();
         this.pointA = pointA;
         this.pointB = pointB;
         this.x = pointA.getX() - pointB.getX();
@@ -20,6 +21,7 @@ public class VectorByPoints implements Figure {
     }
 
     public VectorByPoints() {
+        super();
     }
 
     @Override

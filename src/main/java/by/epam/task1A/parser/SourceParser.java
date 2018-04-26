@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 
 public class SourceParser<T> implements SourceParsable<ArrayList<String>> {
     static Logger logger = LogManager.getLogger();
-    private static final String POINT_COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
-    private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)\\d+(\\.\\d+)(\\s)?";
+    private static final String POINT_COORDINATE_PATTERN = "(\\-)?\\d+(\\.\\d+)(\\s)?";
+    private static final String POINT_PATTERN = "(\\-)?\\d+(\\.\\d+)(\\s)(\\-)?\\d+(\\.\\d+)(\\s)(\\-)?\\d+(\\.\\d+)(\\s)?";
 
     @Override
     public ArrayList<String> excludeWrongLineAtPlaneCoordinatesDataFromList(ArrayList<String> dotsForPlaneList) {

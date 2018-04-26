@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class SourceValidator<T> implements SourceValidatable<ArrayList<String>> {
     static Logger logger = LogManager.getLogger();
-    private static final String PLANE_POINTS_PATTERN = "^\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s" +
-            "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s" +
-            "\\d+(\\.\\d+)\\s\\d+(\\.\\d+)\\s\\d+(\\.\\d+)";
-    private static final String POINT_PATTERN = "\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?\\d+(\\.\\d+)(\\s)?";
-    private static final String COORDINATE_PATTERN = "\\d+(\\.\\d+)(\\s)?";
+    private static final String PLANE_POINTS_PATTERN = "^(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)\\s" +
+            "(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)\\s" +
+            "(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)\\s(\\-)?\\d+(\\.\\d+)";
+    private static final String POINT_PATTERN = "(\\-)?\\d+(\\.\\d+)(\\s)?(\\-)?\\d+(\\.\\d+)(\\s)?(\\-)?\\d+(\\.\\d+)(\\s)?";
+    private static final String COORDINATE_PATTERN = "(\\-)?\\d+(\\.\\d+)(\\s)?";
 
 
     @Override

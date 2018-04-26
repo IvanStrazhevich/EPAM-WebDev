@@ -3,19 +3,21 @@ package by.epam.task1A.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Point implements Figure {
+public class Point extends Figure {
     static Logger logger = LogManager.getLogger();
     private double x;
     private double y;
     private double z;
 
     public Point(double x, double y, double z) {
+        super();
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
     public Point() {
+        super();
     }
 
     @Override
@@ -29,6 +31,7 @@ public class Point implements Figure {
 
     public void setX(double x) {
         this.x = x;
+        notifyObservers();
     }
 
     public double getY() {
@@ -37,6 +40,7 @@ public class Point implements Figure {
 
     public void setY(double y) {
         this.y = y;
+        notifyObservers();
     }
 
     public double getZ() {
@@ -45,6 +49,7 @@ public class Point implements Figure {
 
     public void setZ(double z) {
         this.z = z;
+        notifyObservers();
     }
 
     @Override

@@ -1,10 +1,8 @@
-package by.epam.task.validator;
+package by.epam.task1A.validator;
 
 import by.epam.task1A.exception.ExtendedException;
 import by.epam.task1A.reader.SourceReadable;
 import by.epam.task1A.reader.SourceReader;
-import by.epam.task1A.validator.SourceValidatable;
-import by.epam.task1A.validator.SourceValidator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -21,17 +19,13 @@ public class SourceValidatorTest {
     private SourceReadable<ArrayList<String>> sourceReader;
 
     @BeforeClass
-    public void setUp() {
+    public void setUp() throws ExtendedException {
         sourceValidator = new SourceValidator();
         sourceReader = new SourceReader<ArrayList<String>>();
         sourceList = new ArrayList<>();
         incorrectSourceList = new ArrayList<>();
-        try {
-            sourceList = sourceReader.readSource(CORRECT_DATA_SOURCE);
-            incorrectSourceList = sourceReader.readSource(INCORRECT_DATA_SOURCE);
-        } catch (ExtendedException e) {
-            e.printStackTrace();
-        }
+        sourceList = sourceReader.readSource(CORRECT_DATA_SOURCE);
+        incorrectSourceList = sourceReader.readSource(INCORRECT_DATA_SOURCE);
     }
 
     @AfterClass
@@ -64,10 +58,11 @@ public class SourceValidatorTest {
 
     @Test
     public void testValidateCoordinateDataForPointTrue() {
-        Assert.assertTrue(sourceValidator.validateCoordinatesForPoint(CORRECT_LINE.substring(0,4)));
+        Assert.assertTrue(sourceValidator.validateCoordinatesForPoint(CORRECT_LINE.substring(0, 4)));
     }
+
     @Test
     public void testValidateIncorrectCoordinateDataForPointFalse() {
-        Assert.assertFalse(sourceValidator.validateCoordinatesForPoint(INCORRECT_LINE.substring(0,4)));
+        Assert.assertFalse(sourceValidator.validateCoordinatesForPoint(INCORRECT_LINE.substring(0, 4)));
     }
 }

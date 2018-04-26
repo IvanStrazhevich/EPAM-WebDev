@@ -1,20 +1,18 @@
-package by.epam.task.factory;
+package by.epam.task1A.factory;
 
 import by.epam.task1A.entity.Plane;
 import by.epam.task1A.entity.Point;
 import by.epam.task1A.exception.ExtendedException;
-import by.epam.task1A.factory.PlaneBuilder;
-import by.epam.task1A.factory.PointBuilder;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class PlaneBuilderTest {
-    private static final String CORRECT_PLANE_LINE = "1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0";
-    private static final String CORRECT_POINT_A_LINE = "1.0 2.0 3.0";
-    private static final String CORRECT_POINT_B_LINE = "4.0 5.0 6.0";
-    private static final String CORRECT_POINT_C_LINE = "7.0 8.0 9.0";
+    private static final String CORRECT_PLANE_LINE = "1.0 2.0 8.0 4.0 15.0 6.0 9.0 8.0 10.0";
+    private static final String CORRECT_POINT_A_LINE = "1.0 2.0 8.0";
+    private static final String CORRECT_POINT_B_LINE = "4.0 15.0 6.0";
+    private static final String CORRECT_POINT_C_LINE = "9.0 8.0 10.0";
     private PlaneBuilder planeBuilder;
     private PointBuilder pointBuilder;
     private Plane expected;

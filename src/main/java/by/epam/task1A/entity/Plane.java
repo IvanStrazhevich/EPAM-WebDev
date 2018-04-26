@@ -3,19 +3,21 @@ package by.epam.task1A.entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Plane implements Figure {
+public class Plane extends Figure {
     static Logger logger = LogManager.getLogger();
     private Point a;
     private Point b;
     private Point c;
 
     public Plane(Point a, Point b, Point c) {
+        super();
         this.a = a;
         this.b = b;
         this.c = c;
     }
 
     public Plane() {
+        super();
     }
 
     @Override
@@ -30,6 +32,7 @@ public class Plane implements Figure {
 
     public void setA(Point a) {
         this.a = a;
+        notifyObservers();
     }
 
     public Point getB() {
@@ -38,6 +41,7 @@ public class Plane implements Figure {
 
     public void setB(Point b) {
         this.b = b;
+        notifyObservers();
     }
 
     public Point getC() {
@@ -46,6 +50,7 @@ public class Plane implements Figure {
 
     public void setC(Point c) {
         this.c = c;
+        notifyObservers();
     }
 
 

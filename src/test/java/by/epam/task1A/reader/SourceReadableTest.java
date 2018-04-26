@@ -1,8 +1,6 @@
-package by.epam.task.reader;
+package by.epam.task1A.reader;
 
 import by.epam.task1A.exception.ExtendedException;
-import by.epam.task1A.reader.SourceReadable;
-import by.epam.task1A.reader.SourceReader;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

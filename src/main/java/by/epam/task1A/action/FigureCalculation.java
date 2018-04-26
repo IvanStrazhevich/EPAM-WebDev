@@ -3,26 +3,17 @@ package by.epam.task1A.action;
 import by.epam.task1A.entity.Plane;
 import by.epam.task1A.entity.Point;
 import by.epam.task1A.entity.VectorByPoints;
+import by.epam.task1A.exception.ExtendedException;
+import by.epam.task1A.factory.PlaneBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class FigureCalculation implements Planeable {
+public class FigureCalculation implements Calculatable {
     static Logger logger = LogManager.getLogger();
+    public static String XY_AXIS_PLANE = "1.0 1.0 0.0 2.0 1.0 0.0 1.0 2.0 0.0";
+    public static String YZ_AXIS_PLANE = "0.0 1.0 1.1 0.0 2.0 1.0 0.0 1.0 2.0";
+    public static String ZX_AXIS_PLANE = "1.0 0.0 1.1 2.0 0.0 1.0 1.0 0.0 2.0";
 
-    private VectorByPoints countTheOneNormalVector(VectorByPoints planeVectorN) {
-        VectorByPoints theOneNormalVector = new VectorByPoints();
-        theOneNormalVector.setX(planeVectorN.getX() / (Math.sqrt(Math.pow(planeVectorN.getX(), 2.0) +
-                Math.pow(planeVectorN.getY(), 2.0) + Math.pow(planeVectorN.getZ(), 2.0))));
-
-        theOneNormalVector.setY(planeVectorN.getY() / (Math.sqrt(Math.pow(planeVectorN.getX(), 2.0) +
-                Math.pow(planeVectorN.getY(), 2.0) + Math.pow(planeVectorN.getZ(), 2.0))));
-
-        theOneNormalVector.setZ(planeVectorN.getZ() / (Math.sqrt(Math.pow(planeVectorN.getX(), 2.0) +
-                Math.pow(planeVectorN.getY(), 2.0) + Math.pow(planeVectorN.getZ(), 2.0))));
-
-        logger.debug(theOneNormalVector + "The one normalVector");
-        return theOneNormalVector;
-    }
 
     private VectorByPoints countNormalVectorForPlane(Plane plane) {
         Point pointA = plane.getA();
@@ -33,9 +24,11 @@ public class FigureCalculation implements Planeable {
         planeVectorN.setX(pointA.getY() * (pointB.getZ() - pointC.getZ())
                 + pointB.getY() * (pointC.getZ() - pointA.getZ())
                 + pointC.getY() * (pointA.getZ() - pointB.getZ()));
+
         planeVectorN.setY(pointA.getZ() * (pointB.getX() - pointC.getX())
                 + pointB.getZ() * (pointC.getX() - pointA.getX())
                 + pointC.getZ() * (pointA.getX() - pointB.getX()));
+
         planeVectorN.setZ(pointA.getX() * (pointB.getY() - pointC.getY())
                 + pointB.getX() * (pointC.getY() - pointA.getY())
                 + pointC.getX() * (pointA.getY() - pointB.getY()));
@@ -45,11 +38,10 @@ public class FigureCalculation implements Planeable {
 
     }
 
-    public double countAngleToAxisPlaneGrad(Plane plane, Plane axisPlane) {
-
-        VectorByPoints normalVectorForPlane = countNormalVectorForPlane(plane);
+    private double countPlanesAngleDegrees(Plane plane1, Plane plane2) {
+        VectorByPoints normalVectorForPlane = countNormalVectorForPlane(plane1);
         logger.debug(normalVectorForPlane + "normal to plane");
-        VectorByPoints normalVectorForAxisPlane = countNormalVectorForPlane(axisPlane);
+        VectorByPoints normalVectorForAxisPlane = countNormalVectorForPlane(plane2);
         logger.debug(normalVectorForAxisPlane + "normal to axis");
         double angleRad = Math.acos(Math.abs(normalVectorForPlane.getX() * normalVectorForAxisPlane.getX()
                 + normalVectorForPlane.getY() * normalVectorForAxisPlane.getY()
@@ -61,9 +53,41 @@ public class FigureCalculation implements Planeable {
                 + Math.pow(normalVectorForAxisPlane.getY(), 2.0)
                 + Math.pow(normalVectorForAxisPlane.getZ(), 2.0))));
         double angleDegrees = Math.toDegrees(angleRad);
-        logger.debug(angleRad + "Angle Rad" );
-        logger.debug(angleDegrees + "Angle Degrees" );
+        logger.debug(angleRad + " Angle Rad");
+        logger.debug(angleDegrees + " Angle Degrees");
         return angleDegrees;
+    }
+
+    public double countAngleToXYPlaneGrad(Plane plane) {
+        Plane planeXY = null;
+        try {
+            planeXY = PlaneBuilder.getInstance().createFigure(FigureCalculation.XY_AXIS_PLANE);
+        } catch (ExtendedException e) {
+            logger.error("Plane builder failed ", e);
+        }
+        return countPlanesAngleDegrees(plane, planeXY);
+    }
+
+    @Override
+    public double countAngleToYZPlaneGrad(Plane plane) {
+        Plane planeXZ = null;
+        try {
+            planeXZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.ZX_AXIS_PLANE);
+        } catch (ExtendedException e) {
+            logger.error("Plane builder failed ", e);
+        }
+        return countPlanesAngleDegrees(plane, planeXZ);
+    }
+
+    @Override
+    public double countAngleToXZPlaneGrad(Plane plane) {
+        Plane planeYZ = null;
+        try {
+            planeYZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.YZ_AXIS_PLANE);
+        } catch (ExtendedException e) {
+            logger.error("Plane builder failed ", e);
+        }
+        return countPlanesAngleDegrees(plane, planeYZ);
     }
 
     public boolean checkIfThreeDotsIsPlane(Point pointA, Point pointB, Point pointC) {
