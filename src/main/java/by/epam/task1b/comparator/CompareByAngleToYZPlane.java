@@ -1,4 +1,4 @@
-package by.epam.task1b.coparator;
+package by.epam.task1b.comparator;
 
 import by.epam.task1a.entity.Figure;
 import by.epam.task1b.registrar.PlaneDataRegistrar;
