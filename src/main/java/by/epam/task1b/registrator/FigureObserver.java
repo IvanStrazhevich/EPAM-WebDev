@@ -1,12 +1,17 @@
-package by.epam.task1b.observer;
+package by.epam.task1b.registrator;
 
 import by.epam.task1a.entity.Figure;
 
 import java.util.ArrayList;
 
-public class Observer<T> implements FigureObserver<Figure> {
+public class FigureObserver<T> implements AbstractObserver<Figure> {
 
-    ArrayList<Figure> observableList;
+    private ArrayList<Figure> observableList;
+    DataUpdatable updater;
+
+    public FigureObserver(DataUpdatable updater) {
+        this.updater = updater;
+    }
 
     public void addObservable(Figure observable) {
         observableList.add(observable);
@@ -19,7 +24,10 @@ public class Observer<T> implements FigureObserver<Figure> {
     @Override
     public void handleEvent(FigureEvent event) {
         Figure figure = event.getSource();
-        DataUpdatable updater = new PlaneDataUpdater();
         updater.update(figure);
+    }
+
+    public void setUpdater(DataUpdatable updater) {
+        this.updater = updater;
     }
 }

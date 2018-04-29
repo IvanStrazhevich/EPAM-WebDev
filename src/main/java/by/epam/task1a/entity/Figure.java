@@ -1,9 +1,9 @@
 package by.epam.task1a.entity;
 
-import by.epam.task1b.observer.FigureObservable;
-import by.epam.task1b.observer.FigureEvent;
-import by.epam.task1b.observer.FigureObserver;
-import by.epam.task1b.observer.Observer;
+import by.epam.task1b.registrator.FigureObservable;
+import by.epam.task1b.registrator.FigureEvent;
+import by.epam.task1b.registrator.AbstractObserver;
+import by.epam.task1b.registrator.FigureObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Figure implements FigureObservable {
     static Logger logger = LogManager.getLogger();
 
-    private Observer observer;
+    private FigureObserver figureObserver;
     private long id;
 
     public Figure() {
@@ -24,21 +24,21 @@ public class Figure implements FigureObservable {
     }
 
     @Override
-    public void attach(FigureObserver observer) {
-        this.observer = (Observer) observer;
-        ((Observer) observer).addObservable(this);
+    public void attach(AbstractObserver observer) {
+        this.figureObserver = (FigureObserver) observer;
+        ((FigureObserver) observer).addObservable(this);
     }
 
     @Override
-    public void detach(FigureObserver observer) {
-        this.observer = (Observer) observer;
-        ((Observer) observer).removeObservable(this);
+    public void detach(AbstractObserver observer) {
+        this.figureObserver = (FigureObserver) observer;
+        ((FigureObserver) observer).removeObservable(this);
     }
 
     @Override
     public void notifyObservers() {
-        if (observer != null) {
-            observer.handleEvent(new FigureEvent(this));
+        if (figureObserver != null) {
+            figureObserver.handleEvent(new FigureEvent(this));
         }
     }
 
@@ -50,12 +50,12 @@ public class Figure implements FigureObservable {
         Figure figure = (Figure) o;
 
         if (id != figure.id) return false;
-        return observer != null ? observer.equals(figure.observer) : figure.observer == null;
+        return figureObserver != null ? figureObserver.equals(figure.figureObserver) : figure.figureObserver == null;
     }
 
     @Override
     public int hashCode() {
-        int result = observer != null ? observer.hashCode() : 0;
+        int result = figureObserver != null ? figureObserver.hashCode() : 0;
         result = 31 * result + (int) (id ^ (id >>> 32));
         return result;
     }
@@ -63,7 +63,7 @@ public class Figure implements FigureObservable {
     @Override
     public String toString() {
         return "Figure { " +
-                "observer = " + observer +
+                "figureObserver = " + figureObserver +
                 ", id = " + id +
                 " }";
     }

@@ -1,4 +1,4 @@
-package by.epam.task1b.observer;
+package by.epam.task1b.registrator;
 
 import by.epam.task1a.entity.Figure;
 

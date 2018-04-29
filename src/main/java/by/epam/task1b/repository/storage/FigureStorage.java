@@ -1,4 +1,4 @@
-package by.epam.task1b.repository;
+package by.epam.task1b.repository.storage;
 
 import by.epam.task1a.entity.Figure;
 

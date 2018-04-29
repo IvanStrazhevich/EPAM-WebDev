@@ -10,12 +10,15 @@ import org.testng.annotations.Test;
 public class PointBuilderTest {
     private static final String CORRECT_POINT_LINE = "1.0 2.0 3.0";
     private PointBuilder pointfactory;
+    private double x =1.0;
+    private double y =2.0;
+    private double z =3.0;
     private String expected;
 
     @BeforeMethod
     public void setUp() {
         pointfactory = PointBuilder.getInstance();
-        expected = new Point(1.0, 2.0, 3.0).toString();
+        expected = new Point(x, y, z).toString();
     }
 
     @AfterMethod

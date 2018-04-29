@@ -10,9 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 public class FigureCalculation implements Calculatable {
     static Logger logger = LogManager.getLogger();
-    public static String XY_AXIS_PLANE = "1.0 1.0 0.0 2.0 1.0 0.0 1.0 2.0 0.0";
-    public static String YZ_AXIS_PLANE = "0.0 1.0 1.1 0.0 2.0 1.0 0.0 1.0 2.0";
-    public static String ZX_AXIS_PLANE = "1.0 0.0 1.1 2.0 0.0 1.0 1.0 0.0 2.0";
+    public static final String XY_PLANE_COORDINATES = "1.0 1.0 0.0 2.0 1.0 0.0 1.0 2.0 0.0";
+    public static final String YZ_PLANE_COORDINATES = "0.0 1.0 1.1 0.0 2.0 1.0 0.0 1.0 2.0";
+    public static final String ZX_PLANE_COORDINATES = "1.0 0.0 1.1 2.0 0.0 1.0 1.0 0.0 2.0";
 
 
     private VectorByPoints countNormalVectorForPlane(Plane plane) {
@@ -62,7 +62,7 @@ public class FigureCalculation implements Calculatable {
     public double countAngleToXYPlaneGrad(Plane plane) {
         Plane planeXY = null;
         try {
-            planeXY = PlaneBuilder.getInstance().createFigure(FigureCalculation.XY_AXIS_PLANE);
+            planeXY = PlaneBuilder.getInstance().createFigure(FigureCalculation.XY_PLANE_COORDINATES);
         } catch (ExtendedException e) {
             logger.error("Plane builder failed ", e);
         }
@@ -73,7 +73,7 @@ public class FigureCalculation implements Calculatable {
     public double countAngleToYZPlaneGrad(Plane plane) {
         Plane planeXZ = null;
         try {
-            planeXZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.ZX_AXIS_PLANE);
+            planeXZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.ZX_PLANE_COORDINATES);
         } catch (ExtendedException e) {
             logger.error("Plane builder failed ", e);
         }
@@ -84,7 +84,7 @@ public class FigureCalculation implements Calculatable {
     public double countAngleToXZPlaneGrad(Plane plane) {
         Plane planeYZ = null;
         try {
-            planeYZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.YZ_AXIS_PLANE);
+            planeYZ = PlaneBuilder.getInstance().createFigure(FigureCalculation.YZ_PLANE_COORDINATES);
         } catch (ExtendedException e) {
             logger.error("Plane builder failed ", e);
         }

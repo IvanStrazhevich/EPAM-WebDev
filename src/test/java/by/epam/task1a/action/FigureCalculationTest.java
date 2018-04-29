@@ -14,13 +14,17 @@ import org.testng.annotations.*;
 import java.util.ArrayList;
 
 public class FigureCalculationTest {
-    private static final String CORRECT_PLANE_DATA_FOR_AXIS_COUNT = "1.0 4.0 9.0 4.0 6.0 7.0 -3.0 14.0 29.0";
+    private static final String CORRECT_PLANE_DATA_FOR_ANGLE_COUNT = "1.0 4.0 9.0 4.0 6.0 7.0 -3.0 14.0 29.0";
     private static final String CORRECT_PLANE_DATA = "8.0 7.0 1.0 2.0 5.0 1.0 3.0 4.0 1.0";
     private static final String INCORRECT_PLANE_DATA = "1.0 1.0 1.0 2.0 2.0 2.0 3.0 3.0 3.0";
     private FigureBuilder pointBuilder;
     private FigureBuilder planeBuilder;
     private SourceParsable sourceParser;
     private ArrayList<Point> pointList;
+    private static final int POINT_A = 0;
+    private static final int POINT_B = 1;
+    private static final int POINT_C = 2;
+
     ArrayList<String> dataForPoints;
     FigureCalculation figureCalculation;
 
@@ -44,15 +48,15 @@ public class FigureCalculationTest {
 
     @Test
     public void testCountAngleToXYPlane() throws ExtendedException {
-        figureCalculation.countAngleToXYPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_AXIS_COUNT));
+        figureCalculation.countAngleToXYPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_ANGLE_COUNT));
     }
     @Test
     public void testCountAngleToXZPlane() throws ExtendedException {
-        figureCalculation.countAngleToXZPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_AXIS_COUNT));
+        figureCalculation.countAngleToXZPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_ANGLE_COUNT));
     }
     @Test
     public void testCountAngleToYZPlane() throws ExtendedException {
-        figureCalculation.countAngleToYZPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_AXIS_COUNT));
+        figureCalculation.countAngleToYZPlaneGrad((Plane) planeBuilder.createFigure(CORRECT_PLANE_DATA_FOR_ANGLE_COUNT));
     }
 
     @Test
@@ -64,9 +68,9 @@ public class FigureCalculationTest {
             Point point = (Point) pointBuilder.createFigure(dot);
             pointList.add(point);
         }
-        Point pointA = pointList.get(0);
-        Point pointB = pointList.get(1);
-        Point pointC = pointList.get(2);
+        Point pointA = pointList.get(POINT_A);
+        Point pointB = pointList.get(POINT_B);
+        Point pointC = pointList.get(POINT_C);
         Assert.assertTrue(figureCalculation.checkIfThreeDotsIsPlane(pointA, pointB, pointC));
     }
 

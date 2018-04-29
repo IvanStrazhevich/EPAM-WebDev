@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class AppTest {
     private static final String CORRECT_DATA_SOURCE = "/Users/ivanstrazhevich/Desktop/IdeaProjects/webDev/data/wrongLineData.txt";
-    private static int EXPECTED_NUMBER_OF_PLANES = 2;
+    private static final int EXPECTED_NUMBER_OF_PLANES = 2;
 
     @Test
     public void AppTest() throws ExtendedException {

@@ -1,6 +1,8 @@
 package by.epam.task1b.repository;
 
 import by.epam.task1a.entity.Figure;
+import by.epam.task1b.repository.specification.QuerySpecification;
+import by.epam.task1b.repository.storage.FigureStorage;
 
 import java.util.ArrayList;
 
@@ -36,6 +38,6 @@ public class FigureReposirory<T> implements Reposirory<Figure> {
 
     @Override
     public ArrayList<Figure> query(QuerySpecification specification) {
-        return null;
+        return (ArrayList<Figure>) specification.executeQuery();
     }
 }

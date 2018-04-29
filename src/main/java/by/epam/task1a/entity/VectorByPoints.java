@@ -5,16 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 public class VectorByPoints extends Figure {
     static Logger logger = LogManager.getLogger();
-    private Point pointA;
-    private Point pointB;
     private double x;
     private double y;
     private double z;
 
     public VectorByPoints(Point pointA, Point pointB) {
         super();
-        this.pointA = pointA;
-        this.pointB = pointB;
         this.x = pointA.getX() - pointB.getX();
         this.y = pointA.getY() - pointB.getY();
         this.z = pointA.getZ() - pointB.getZ();
@@ -27,22 +23,6 @@ public class VectorByPoints extends Figure {
     @Override
     public void identifyFigure() {
         logger.info("Vector is done");
-    }
-
-    public Point getPointA() {
-        return pointA;
-    }
-
-    public void setPointA(Point pointA) {
-        this.pointA = pointA;
-    }
-
-    public Point getPointB() {
-        return pointB;
-    }
-
-    public void setPointB(Point pointB) {
-        this.pointB = pointB;
     }
 
     public double getX() {
@@ -79,17 +59,14 @@ public class VectorByPoints extends Figure {
 
         if (Double.compare(vector.x, x) != 0) return false;
         if (Double.compare(vector.y, y) != 0) return false;
-        if (Double.compare(vector.z, z) != 0) return false;
-        if (pointA != null ? !pointA.equals(vector.pointA) : vector.pointA != null) return false;
-        return pointB != null ? pointB.equals(vector.pointB) : vector.pointB == null;
+        return (Double.compare(vector.z, z) != 0);
+
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         long temp;
-        result = 31 * result + (pointA != null ? pointA.hashCode() : 0);
-        result = 31 * result + (pointB != null ? pointB.hashCode() : 0);
         temp = Double.doubleToLongBits(x);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(y);
@@ -102,8 +79,6 @@ public class VectorByPoints extends Figure {
     @Override
     public String toString() {
         return "VectorByPoints { " +
-                "pointA = " + pointA +
-                ", pointB = " + pointB +
                 ", x = " + x +
                 ", y = " + y +
                 ", z = " + z +
