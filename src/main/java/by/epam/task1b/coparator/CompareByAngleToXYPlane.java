@@ -1,7 +1,7 @@
 package by.epam.task1b.coparator;
 
 import by.epam.task1a.entity.Figure;
-import by.epam.task1b.registrator.PlaneDataRegistrar;
+import by.epam.task1b.registrar.PlaneDataRegistrar;
 
 import java.util.Comparator;
 import java.util.HashMap;

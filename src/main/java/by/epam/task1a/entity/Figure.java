@@ -1,9 +1,9 @@
 package by.epam.task1a.entity;
 
-import by.epam.task1b.registrator.FigureObservable;
-import by.epam.task1b.registrator.FigureEvent;
-import by.epam.task1b.registrator.AbstractObserver;
-import by.epam.task1b.registrator.FigureObserver;
+import by.epam.task1b.registrar.FigureObservable;
+import by.epam.task1b.registrar.FigureEvent;
+import by.epam.task1b.registrar.AbstractObserver;
+import by.epam.task1b.registrar.FigureObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

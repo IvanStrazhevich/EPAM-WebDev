@@ -1,4 +1,4 @@
-package by.epam.task1b.registrator;
+package by.epam.task1b.registrar;
 
 import java.util.HashMap;
 
