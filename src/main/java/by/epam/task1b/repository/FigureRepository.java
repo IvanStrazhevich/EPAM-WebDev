@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class FigureRepository<T> implements Reposirory<Figure> {
+public class FigureRepository<T> implements Repositorable<Figure> {
     static Logger logger = LogManager.getLogger();
 
     @Override
