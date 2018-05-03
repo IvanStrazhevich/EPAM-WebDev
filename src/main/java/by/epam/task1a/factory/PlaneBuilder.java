@@ -1,13 +1,11 @@
 package by.epam.task1a.factory;
 
 import by.epam.task1a.entity.Plane;
-import by.epam.task1a.entity.Point;
 import by.epam.task1a.exception.ExtendedException;
 import by.epam.task1a.parser.SourceParsable;
 import by.epam.task1a.parser.SourceParser;
 import by.epam.task1a.validator.SourceValidatable;
 import by.epam.task1a.validator.SourceValidator;
-import by.epam.task1b.registrar.PlaneObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,11 +14,11 @@ import java.util.ArrayList;
 
 public class PlaneBuilder implements FigureBuilder {
     static Logger logger = LogManager.getLogger();
-    private FigureBuilder pointBuilder;
+    private PointBuilder pointBuilder;
     private SourceParsable sourceParser;
     private SourceValidatable sourceValidator;
 
-    private PlaneBuilder(FigureBuilder pointBuilder, SourceParsable sourceParser, SourceValidatable sourceValidator) {
+    private PlaneBuilder(PointBuilder pointBuilder, SourceParsable sourceParser, SourceValidatable sourceValidator) {
         this.pointBuilder = pointBuilder;
         this.sourceParser = sourceParser;
         this.sourceValidator = sourceValidator;
@@ -43,9 +41,9 @@ public class PlaneBuilder implements FigureBuilder {
             String pointA = dotDataList.get(0);
             String pointB = dotDataList.get(1);
             String pointC = dotDataList.get(2);
-            Plane plane = new Plane((Point) pointBuilder.createFigure(pointA),
-                    (Point) pointBuilder.createFigure(pointB),
-                    (Point) pointBuilder.createFigure(pointC));
+            Plane plane = new Plane(pointBuilder.createFigure(pointA),
+                    pointBuilder.createFigure(pointB),
+                    pointBuilder.createFigure(pointC));
             logger.debug(plane.toString());
             return plane;
         } else {
@@ -53,7 +51,7 @@ public class PlaneBuilder implements FigureBuilder {
         }
     }
 
-    public void setPointBuilder(FigureBuilder pointBuilder) {
+    public void setPointBuilder(PointBuilder pointBuilder) {
         this.pointBuilder = pointBuilder;
     }
 

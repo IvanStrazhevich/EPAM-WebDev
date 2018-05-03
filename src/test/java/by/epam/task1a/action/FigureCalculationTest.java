@@ -17,7 +17,7 @@ public class FigureCalculationTest {
     private static final String CORRECT_PLANE_DATA_FOR_ANGLE_COUNT = "1.0 4.0 9.0 4.0 6.0 7.0 -3.0 14.0 29.0";
     private static final String CORRECT_PLANE_DATA = "8.0 7.0 1.0 2.0 5.0 1.0 3.0 4.0 1.0";
     private static final String INCORRECT_PLANE_DATA = "1.0 1.0 1.0 2.0 2.0 2.0 3.0 3.0 3.0";
-    private FigureBuilder pointBuilder;
+    private PointBuilder pointBuilder;
     private FigureBuilder planeBuilder;
     private SourceParsable sourceParser;
     private ArrayList<Point> pointList;
@@ -65,7 +65,7 @@ public class FigureCalculationTest {
         pointList = new ArrayList<>();
         for (String dot : dataForPoints
                 ) {
-            Point point = (Point) pointBuilder.createFigure(dot);
+            Point point = pointBuilder.createFigure(dot);
             pointList.add(point);
         }
         Point pointA = pointList.get(POINT_A);
@@ -86,7 +86,7 @@ public class FigureCalculationTest {
         pointList = new ArrayList<>();
         for (String dot : dataForPoints
                 ) {
-            Point point = (Point) pointBuilder.createFigure(dot);
+            Point point = pointBuilder.createFigure(dot);
             pointList.add(point);
         }
         Point pointA = pointList.get(0);
