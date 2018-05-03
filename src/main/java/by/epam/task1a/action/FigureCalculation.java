@@ -10,9 +10,10 @@ import org.apache.logging.log4j.Logger;
 
 public class FigureCalculation implements Calculatable {
     static Logger logger = LogManager.getLogger();
-    public static final String XY_PLANE_COORDINATES = "1.0 1.0 0.0 2.0 1.0 0.0 1.0 2.0 0.0";
-    public static final String YZ_PLANE_COORDINATES = "0.0 1.0 1.1 0.0 2.0 1.0 0.0 1.0 2.0";
-    public static final String ZX_PLANE_COORDINATES = "1.0 0.0 1.1 2.0 0.0 1.0 1.0 0.0 2.0";
+    private static final String XY_PLANE_COORDINATES = "1.0 1.0 0.0 2.0 1.0 0.0 1.0 2.0 0.0";
+    private static final String YZ_PLANE_COORDINATES = "0.0 1.0 1.1 0.0 2.0 1.0 0.0 1.0 2.0";
+    private static final String ZX_PLANE_COORDINATES = "1.0 0.0 1.1 2.0 0.0 1.0 1.0 0.0 2.0";
+    private static final double POWER = 2.0;
 
 
     private VectorByPoints countNormalVectorForPlane(Plane plane) {
@@ -46,12 +47,12 @@ public class FigureCalculation implements Calculatable {
         double angleRad = Math.acos(Math.abs(normalVectorForPlane.getX() * normalVectorForAxisPlane.getX()
                 + normalVectorForPlane.getY() * normalVectorForAxisPlane.getY()
                 + normalVectorForPlane.getZ() * normalVectorForAxisPlane.getZ())
-                / (Math.sqrt(Math.pow(normalVectorForPlane.getX(), 2.0)
-                + Math.pow(normalVectorForPlane.getY(), 2.0)
-                + Math.pow(normalVectorForPlane.getZ(), 2.0))
-                * Math.sqrt(Math.pow(normalVectorForAxisPlane.getX(), 2.0)
-                + Math.pow(normalVectorForAxisPlane.getY(), 2.0)
-                + Math.pow(normalVectorForAxisPlane.getZ(), 2.0))));
+                / (Math.sqrt(Math.pow(normalVectorForPlane.getX(), POWER)
+                + Math.pow(normalVectorForPlane.getY(), POWER)
+                + Math.pow(normalVectorForPlane.getZ(), POWER))
+                * Math.sqrt(Math.pow(normalVectorForAxisPlane.getX(), POWER)
+                + Math.pow(normalVectorForAxisPlane.getY(), POWER)
+                + Math.pow(normalVectorForAxisPlane.getZ(), POWER))));
         double angleDegrees = Math.toDegrees(angleRad);
         logger.debug(angleRad + " Angle Rad");
         logger.debug(angleDegrees + " Angle Degrees");

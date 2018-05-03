@@ -1,8 +1,6 @@
 package by.epam.task1b.repository.specification;
 
 import by.epam.task1a.entity.Figure;
-import by.epam.task1a.entity.Plane;
-import by.epam.task1b.repository.comparator.CompareById;
 import by.epam.task1b.repository.comparator.CompareByPointACoordinateX;
 import by.epam.task1b.repository.storage.FigureStorage;
 import org.apache.logging.log4j.LogManager;

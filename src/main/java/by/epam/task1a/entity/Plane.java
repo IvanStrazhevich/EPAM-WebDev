@@ -1,6 +1,5 @@
 package by.epam.task1a.entity;
 
-import by.epam.task1b.registrar.PlaneObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,12 +14,10 @@ public class Plane extends Figure {
         this.a = a;
         this.b = b;
         this.c = c;
-        notifyObservers();
     }
 
     public Plane() {
         super();
-        notifyObservers();
     }
 
     @Override

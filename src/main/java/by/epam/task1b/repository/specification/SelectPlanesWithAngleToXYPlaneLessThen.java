@@ -35,11 +35,11 @@ public class SelectPlanesWithAngleToXYPlaneLessThen<R, T> implements QuerySpecif
         logger.debug("Before sort: " + figureList);
         for (Figure figure : figureList
                 ) {
-            if (figure != null && angleXYMap !=null && angleXYMap.get(figure.getId()).compareTo(angleToCompareTo) < 0) {
+            if (figure != null && angleXYMap != null && angleXYMap.get(figure.getId()).compareTo(angleToCompareTo) < 0) {
                 filteredFigureList.add(figure);
             }
         }
-        if(comparator==null){
+        if (comparator == null) {
             comparator = new CompareById();
         }
         Collections.sort(filteredFigureList, comparator);

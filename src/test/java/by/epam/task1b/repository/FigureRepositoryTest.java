@@ -7,8 +7,6 @@ import by.epam.task1a.factory.PlaneFactory;
 import by.epam.task1a.factory.PointBuilder;
 import by.epam.task1a.parser.SourceParser;
 import by.epam.task1a.reader.SourceReader;
-import by.epam.task1b.registrar.PlaneObserver;
-import by.epam.task1b.registrar.PlaneDataRegistrar;
 import by.epam.task1b.repository.comparator.CompareByAngleToXYPlane;
 import by.epam.task1b.repository.comparator.CompareById;
 import by.epam.task1b.repository.comparator.CompareByPointACoordinateX;
@@ -24,7 +22,7 @@ public class FigureRepositoryTest {
     private static final String CORRECT_DATA_SOURCE = "/Users/ivanstrazhevich/Desktop/IdeaProjects/webDev/data/test1BData.txt";
     private static final String CORRECT_POINT_LINE = "4.0 10.0 17.0";
     private static final int FIRST_ELEMENT = 0;
-    private static final double ANGLE_TO_FILTER = 60.0;
+    private static final double ANGLE_TO_FILTER = 50.0;
     private SourceReader sourceReader;
     private SourceParser sourceParser;
     private FigureFactory planeFactory;

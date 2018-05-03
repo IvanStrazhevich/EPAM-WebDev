@@ -2,7 +2,7 @@ package by.epam.task1b.repository.specification;
 
 import by.epam.task1a.entity.Figure;
 import by.epam.task1b.registrar.PlaneDataRegistrar;
-import by.epam.task1b.repository.comparator.CompareById;
+import by.epam.task1b.repository.comparator.CompareByAngleToXZPlane;
 import by.epam.task1b.repository.storage.FigureStorage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,12 +34,12 @@ public class SelectPlanesWithAngleToXZPlaneLessThen<R, T> implements QuerySpecif
         logger.debug("Before sort: " + figureList);
         for (Figure figure : figureList
                 ) {
-            if (figure != null && angleXZMap !=null && angleXZMap.get(figure.getId()).compareTo(angleToCompareTo) < 0) {
+            if (figure != null && angleXZMap != null && angleXZMap.get(figure.getId()).compareTo(angleToCompareTo) < 0) {
                 filteredFigureList.add(figure);
             }
         }
-        if(comparator==null){
-            comparator = new CompareById();
+        if (comparator == null) {
+            comparator = new CompareByAngleToXZPlane();
         }
         Collections.sort(filteredFigureList, comparator);
         logger.debug("After sort: " + filteredFigureList);

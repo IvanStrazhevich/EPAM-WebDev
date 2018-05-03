@@ -1,6 +1,5 @@
 package by.epam.task1a.entity;
 
-import by.epam.task1b.registrar.PlaneDataUpdater;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

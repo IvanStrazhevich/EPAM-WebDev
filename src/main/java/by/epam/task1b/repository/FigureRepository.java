@@ -23,7 +23,6 @@ public class FigureRepository<T> implements Reposirory<Figure> {
     @Override
     public boolean remove(Figure figure) {
         FigureStorage figureStorage = FigureStorage.getInstance();
-        figure.attach(PlaneObserver.getInstance());
         figure.notifyObservers();
         return figureStorage.getFigureList().remove(figure);
     }
@@ -35,7 +34,7 @@ public class FigureRepository<T> implements Reposirory<Figure> {
         for (Figure item : figureList
                 ) {
             if (item.getId() == figure.getId()) {
-
+                item.notifyObservers();
                 logger.debug("remove is " + figureList.remove(item));
                 figureList.add(figure);
             }
@@ -63,10 +62,8 @@ public class FigureRepository<T> implements Reposirory<Figure> {
         ArrayList<Figure> figureList = figureStorage.getFigureList();
         for (Figure item : figureList
                 ) {
-            item.attach(PlaneObserver.getInstance());
             item.notifyObservers();
             figureList.remove(item);
-
         }
         return !figureList.isEmpty();
     }

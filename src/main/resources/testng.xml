@@ -4,7 +4,7 @@
 
 <test name="AllTestsAtOnce" >
     <packages>
-        <package name="by.epam.task1b.*"/>
+        <package name="by.epam.*"/>
     </packages>
 </test>
 </suite>

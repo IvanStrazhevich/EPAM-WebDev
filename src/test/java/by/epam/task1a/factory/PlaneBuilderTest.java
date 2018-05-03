@@ -42,6 +42,7 @@ public class PlaneBuilderTest {
     public void testCreateFigure() throws ExtendedException {
        Plane actualPlane = planeBuilder.createFigure(CORRECT_PLANE_LINE);
        actualPlane.setId(plane.getId());
+       actualPlane.attach(PlaneObserver.getInstance());
        String actual = actualPlane.toString();
         Assert.assertEquals(actual, expected);
     }

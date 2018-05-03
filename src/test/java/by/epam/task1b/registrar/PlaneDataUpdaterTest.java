@@ -68,6 +68,8 @@ public class PlaneDataUpdaterTest {
     @Test
     public void testUpdateDifferentDataBeforeAndAfterUpdate() throws Exception {
         Plane plane = planes.get(FIRST_ELEMENT);
+        System.out.println(plane);
+        System.out.println(planeObserver);
         plane.attach(planeObserver);
         planeRepository.add(plane);
         double previous = figureCalculation.countAngleToXYPlaneGrad(plane);
