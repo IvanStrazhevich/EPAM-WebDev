@@ -59,7 +59,7 @@ public class PlaneDataUpdaterTest {
         Plane plane = planes.get(FIRST_ELEMENT);
         plane.attach(planeObserver);
         planeRepository.add(plane);
-        plane.setA(PointBuilder.getInstance().createFigure(CORRECT_POINT_LINE));
+        plane.setA(PointBuilder.getInstance().createPoint(CORRECT_POINT_LINE));
         planeRepository.update(plane);
         double expected = figureCalculation.countAngleToXYPlaneGrad(plane);
         double actual = (Double)planeDataRegistrar.getFigureAngleXYHashMap().get(plane.getId());
@@ -73,7 +73,7 @@ public class PlaneDataUpdaterTest {
         plane.attach(planeObserver);
         planeRepository.add(plane);
         double previous = figureCalculation.countAngleToXYPlaneGrad(plane);
-        plane.setA(PointBuilder.getInstance().createFigure(CORRECT_POINT_LINE));
+        plane.setA(PointBuilder.getInstance().createPoint(CORRECT_POINT_LINE));
         planeRepository.update(plane);
         double actual = (Double)planeDataRegistrar.getFigureAngleXYHashMap().get(plane.getId());
         Assert.assertNotEquals(actual,previous);

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
-public class PointBuilder {
+public class PointBuilder implements PointBuildable {
     static Logger logger = LogManager.getLogger();
     private static final int POINT_A = 0;
     private static final int POINT_B = 1;
@@ -30,7 +30,7 @@ public class PointBuilder {
         return instance;
     }
 
-    public Point createFigure(String dataSource) throws ExtendedException {
+    public Point createPoint(String dataSource) throws ExtendedException {
         if (dataSource != null && sourceValidator.validateDataForPoint(dataSource)) {
             String[] arrayData = dataSource.split("\\s");
             logger.debug(Arrays.toString(arrayData));

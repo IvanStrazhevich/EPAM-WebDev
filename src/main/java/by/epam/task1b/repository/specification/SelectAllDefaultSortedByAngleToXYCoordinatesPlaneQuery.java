@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class SelectAllDefaultSortedByAngleToXYCoordinatesPlaneQuery<R, T> implements QuerySpecification<ArrayList<Figure>> {
+public class SelectAllDefaultSortedByAngleToXYCoordinatesPlaneQuery<R> implements QuerySpecification<ArrayList<Figure>> {
     static Logger logger = LogManager.getLogger();
     private Comparator<Figure> comparator;
 

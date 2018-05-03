@@ -3,7 +3,7 @@ package by.epam.task1a.action;
 import by.epam.task1a.entity.Plane;
 import by.epam.task1a.entity.Point;
 import by.epam.task1a.exception.ExtendedException;
-import by.epam.task1a.factory.FigureBuilder;
+import by.epam.task1a.factory.FigureBuildable;
 import by.epam.task1a.factory.PlaneBuilder;
 import by.epam.task1a.factory.PointBuilder;
 import by.epam.task1a.parser.SourceParsable;
@@ -18,7 +18,7 @@ public class FigureCalculationTest {
     private static final String CORRECT_PLANE_DATA = "8.0 7.0 1.0 2.0 5.0 1.0 3.0 4.0 1.0";
     private static final String INCORRECT_PLANE_DATA = "1.0 1.0 1.0 2.0 2.0 2.0 3.0 3.0 3.0";
     private PointBuilder pointBuilder;
-    private FigureBuilder planeBuilder;
+    private FigureBuildable planeBuilder;
     private SourceParsable sourceParser;
     private ArrayList<Point> pointList;
     private static final int POINT_A = 0;
@@ -65,7 +65,7 @@ public class FigureCalculationTest {
         pointList = new ArrayList<>();
         for (String dot : dataForPoints
                 ) {
-            Point point = pointBuilder.createFigure(dot);
+            Point point = pointBuilder.createPoint(dot);
             pointList.add(point);
         }
         Point pointA = pointList.get(POINT_A);
@@ -86,7 +86,7 @@ public class FigureCalculationTest {
         pointList = new ArrayList<>();
         for (String dot : dataForPoints
                 ) {
-            Point point = pointBuilder.createFigure(dot);
+            Point point = pointBuilder.createPoint(dot);
             pointList.add(point);
         }
         Point pointA = pointList.get(0);

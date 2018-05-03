@@ -22,7 +22,7 @@ public class PlaneFactory<T> implements FigureFactory<Plane> {
     @Override
     public ArrayList<Plane> createFigures(ArrayList<String> figuresList) {
         ArrayList<Plane> planeList = new ArrayList<>();
-        FigureBuilder planeBuilder = PlaneBuilder.getInstance();
+        FigureBuildable planeBuilder = PlaneBuilder.getInstance();
         FigureCalculation calculation = new FigureCalculation();
         for (String figure : figuresList
                 ) {

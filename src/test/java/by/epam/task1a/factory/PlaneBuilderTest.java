@@ -22,9 +22,9 @@ public class PlaneBuilderTest {
     @BeforeMethod
     public void setUp() throws ExtendedException {
         pointBuilder = PointBuilder.getInstance();
-        Point pointA = pointBuilder.createFigure(CORRECT_POINT_A_LINE);
-        Point pointB = pointBuilder.createFigure(CORRECT_POINT_B_LINE);
-        Point pointC = pointBuilder.createFigure(CORRECT_POINT_C_LINE);
+        Point pointA = pointBuilder.createPoint(CORRECT_POINT_A_LINE);
+        Point pointB = pointBuilder.createPoint(CORRECT_POINT_B_LINE);
+        Point pointC = pointBuilder.createPoint(CORRECT_POINT_C_LINE);
         planeBuilder = PlaneBuilder.getInstance();
         plane = new Plane(pointA, pointB, pointC);
         plane.attach(PlaneObserver.getInstance());

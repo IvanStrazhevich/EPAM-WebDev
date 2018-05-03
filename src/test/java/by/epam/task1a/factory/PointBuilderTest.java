@@ -29,7 +29,7 @@ public class PointBuilderTest {
 
     @Test
     public void testCreateFigure() throws ExtendedException {
-        String actual = pointfactory.createFigure(CORRECT_POINT_LINE).toString();
+        String actual = pointfactory.createPoint(CORRECT_POINT_LINE).toString();
         Assert.assertEquals(actual, expected);
     }
 }

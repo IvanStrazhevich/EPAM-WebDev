@@ -68,7 +68,7 @@ public class FigureRepositoryTest {
     @Test(dependsOnMethods = {"testAddEqualsItem", "testRemoveTrue"}, alwaysRun = true)
     public void testUpdate() throws Exception {
         Plane plane = planes.get(FIRST_ELEMENT);
-        plane.setA(PointBuilder.getInstance().createFigure(CORRECT_POINT_LINE));
+        plane.setA(PointBuilder.getInstance().createPoint(CORRECT_POINT_LINE));
         planeRepository.update(plane);
         Assert.assertEquals(planeRepository.query(new SelectAllDefaultSortedByAngleToXYCoordinatesPlaneQuery(new CompareById())).get(FIRST_ELEMENT),
                 plane);

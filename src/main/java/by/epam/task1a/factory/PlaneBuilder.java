@@ -12,13 +12,16 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
 
-public class PlaneBuilder implements FigureBuilder {
+public class PlaneBuilder implements FigureBuildable {
     static Logger logger = LogManager.getLogger();
-    private PointBuilder pointBuilder;
+    private PointBuildable pointBuilder;
     private SourceParsable sourceParser;
     private SourceValidatable sourceValidator;
+    private static final int POINT_A = 0;
+    private static final int POINT_B = 1;
+    private static final int POINT_C = 2;
 
-    private PlaneBuilder(PointBuilder pointBuilder, SourceParsable sourceParser, SourceValidatable sourceValidator) {
+    private PlaneBuilder(PointBuildable pointBuilder, SourceParsable sourceParser, SourceValidatable sourceValidator) {
         this.pointBuilder = pointBuilder;
         this.sourceParser = sourceParser;
         this.sourceValidator = sourceValidator;
@@ -36,14 +39,14 @@ public class PlaneBuilder implements FigureBuilder {
     @Override
     public Plane createFigure(String dataSource) throws ExtendedException {
         if (dataSource != null && sourceValidator.validateCorrectLinePointsForPlane(dataSource)) {
-            ArrayList<String> dotDataList = sourceParser.createDotListFromString(dataSource);
-            logger.debug(dotDataList + " Data for plane");
-            String pointA = dotDataList.get(0);
-            String pointB = dotDataList.get(1);
-            String pointC = dotDataList.get(2);
-            Plane plane = new Plane(pointBuilder.createFigure(pointA),
-                    pointBuilder.createFigure(pointB),
-                    pointBuilder.createFigure(pointC));
+            ArrayList<String> pointDataList = sourceParser.createDotListFromString(dataSource);
+            logger.debug(pointDataList + " Data for plane");
+            String pointA = pointDataList.get(POINT_A);
+            String pointB = pointDataList.get(POINT_B);
+            String pointC = pointDataList.get(POINT_C);
+            Plane plane = new Plane(pointBuilder.createPoint(pointA),
+                    pointBuilder.createPoint(pointB),
+                    pointBuilder.createPoint(pointC));
             logger.debug(plane.toString());
             return plane;
         } else {
@@ -51,7 +54,7 @@ public class PlaneBuilder implements FigureBuilder {
         }
     }
 
-    public void setPointBuilder(PointBuilder pointBuilder) {
+    public void setPointBuildable(PointBuildable pointBuilder) {
         this.pointBuilder = pointBuilder;
     }
 

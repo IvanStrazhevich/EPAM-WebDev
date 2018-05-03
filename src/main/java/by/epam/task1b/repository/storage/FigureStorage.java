@@ -4,7 +4,7 @@ import by.epam.task1a.entity.Figure;
 
 import java.util.ArrayList;
 
-public class FigureStorage implements Storage {
+public class FigureStorage {
     private ArrayList<Figure> figureList;
     private static FigureStorage instance;
 
