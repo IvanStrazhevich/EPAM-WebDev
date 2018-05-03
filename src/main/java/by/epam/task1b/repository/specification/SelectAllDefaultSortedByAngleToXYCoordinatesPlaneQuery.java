@@ -25,7 +25,7 @@ public class SelectAllDefaultSortedByAngleToXYCoordinatesPlaneQuery<R, T> implem
     public ArrayList<Figure> executeQuery() {
         ArrayList<Figure> figureList = FigureStorage.getInstance().getFigureList();
         logger.debug("Before sort: " + figureList);
-        if(comparator == null){
+        if (comparator == null) {
             comparator = new CompareByAngleToXYPlane();
         }
         Collections.sort(figureList, comparator);

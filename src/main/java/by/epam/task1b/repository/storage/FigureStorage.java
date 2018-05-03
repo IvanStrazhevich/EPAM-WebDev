@@ -9,7 +9,7 @@ public class FigureStorage implements Storage {
     private static FigureStorage instance;
 
     private FigureStorage(ArrayList<Figure> list) {
-        this.figureList=list;
+        this.figureList = list;
     }
 
     public static final FigureStorage getInstance() {

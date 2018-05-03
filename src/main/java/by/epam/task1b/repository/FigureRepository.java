@@ -57,18 +57,6 @@ public class FigureRepository<T> implements Reposirory<Figure> {
     }
 
     @Override
-    public boolean deleteAll() {
-        FigureStorage figureStorage = FigureStorage.getInstance();
-        ArrayList<Figure> figureList = figureStorage.getFigureList();
-        for (Figure item : figureList
-                ) {
-            item.notifyObservers();
-            figureList.remove(item);
-        }
-        return !figureList.isEmpty();
-    }
-
-    @Override
     public ArrayList<Figure> query(QuerySpecification specification) {
         return (ArrayList<Figure>) specification.executeQuery();
     }

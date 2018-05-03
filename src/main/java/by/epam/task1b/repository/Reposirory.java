@@ -11,6 +11,5 @@ public interface Reposirory<T> {
     boolean remove(T item);
     boolean update(T item);
     boolean addAll(ArrayList<T> list);
-    boolean deleteAll();
     List<T> query(QuerySpecification querySpecification);
 }
