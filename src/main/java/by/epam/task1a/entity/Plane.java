@@ -1,5 +1,6 @@
 package by.epam.task1a.entity;
 
+import by.epam.task1b.registrar.PlaneObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -79,7 +80,8 @@ public class Plane extends Figure {
 
     @Override
     public String toString() {
-        return "Plane { " +
+        return super.toString() +
+                "Plane { " +
                 "a = " + a +
                 ", b = " + b +
                 ", c = " + c +

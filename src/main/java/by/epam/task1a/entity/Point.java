@@ -1,5 +1,6 @@
 package by.epam.task1a.entity;
 
+import by.epam.task1b.registrar.PlaneDataUpdater;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +15,6 @@ public class Point extends Figure {
         this.x = x;
         this.y = y;
         this.z = z;
-        notifyObservers();
     }
 
     public Point() {
@@ -82,7 +82,7 @@ public class Point extends Figure {
     @Override
     public String toString() {
         return "Point { " +
-                "x =" + x +
+                "x = " + x +
                 ", y = " + y +
                 ", z = " + z +
                 " }";

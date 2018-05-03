@@ -3,6 +3,7 @@ package by.epam.task1a.factory;
 import by.epam.task1a.entity.Plane;
 import by.epam.task1a.entity.Point;
 import by.epam.task1a.exception.ExtendedException;
+import by.epam.task1b.registrar.PlaneObserver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +17,7 @@ public class PlaneBuilderTest {
     private PlaneBuilder planeBuilder;
     private PointBuilder pointBuilder;
     private String expected;
+    Plane plane;
 
     @BeforeMethod
     public void setUp() throws ExtendedException {
@@ -24,7 +26,9 @@ public class PlaneBuilderTest {
         Point pointB = pointBuilder.createFigure(CORRECT_POINT_B_LINE);
         Point pointC = pointBuilder.createFigure(CORRECT_POINT_C_LINE);
         planeBuilder = PlaneBuilder.getInstance();
-        expected = new Plane(pointA, pointB, pointC).toString();
+        plane = new Plane(pointA, pointB, pointC);
+        plane.attach(PlaneObserver.getInstance());
+        expected = plane.toString();
     }
 
     @AfterMethod
@@ -36,7 +40,9 @@ public class PlaneBuilderTest {
 
     @Test
     public void testCreateFigure() throws ExtendedException {
-        String actual = planeBuilder.createFigure(CORRECT_PLANE_LINE).toString();
+       Plane actualPlane = planeBuilder.createFigure(CORRECT_PLANE_LINE);
+       actualPlane.setId(plane.getId());
+       String actual = actualPlane.toString();
         Assert.assertEquals(actual, expected);
     }
 }

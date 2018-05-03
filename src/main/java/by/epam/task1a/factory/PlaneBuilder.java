@@ -7,6 +7,7 @@ import by.epam.task1a.parser.SourceParsable;
 import by.epam.task1a.parser.SourceParser;
 import by.epam.task1a.validator.SourceValidatable;
 import by.epam.task1a.validator.SourceValidator;
+import by.epam.task1b.registrar.PlaneObserver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

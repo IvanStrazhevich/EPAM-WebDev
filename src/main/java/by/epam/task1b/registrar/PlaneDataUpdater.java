@@ -11,8 +11,8 @@ public class PlaneDataUpdater<T> implements DataUpdatable<Plane> {
         PlaneDataRegistrar<HashMap> dataRegistrant = PlaneDataRegistrar.getInstance();
         FigureCalculation figureCalculation = new FigureCalculation();
         double planeXYAngle = figureCalculation.countAngleToXYPlaneGrad(plane);
-        double planeXZAngle = figureCalculation.countAngleToXYPlaneGrad(plane);
-        double planeYZAngle = figureCalculation.countAngleToXYPlaneGrad(plane);
+        double planeXZAngle = figureCalculation.countAngleToXZPlaneGrad(plane);
+        double planeYZAngle = figureCalculation.countAngleToYZPlaneGrad(plane);
         long figureId = plane.getId();
         dataRegistrant.getFigureAngleXYHashMap().put(figureId,planeXYAngle);
         dataRegistrant.getFigureAngleXZHashMap().put(figureId,planeXZAngle);

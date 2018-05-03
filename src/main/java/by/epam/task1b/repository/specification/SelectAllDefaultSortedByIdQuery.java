@@ -1,6 +1,7 @@
 package by.epam.task1b.repository.specification;
 
 import by.epam.task1a.entity.Figure;
+import by.epam.task1b.repository.comparator.CompareById;
 import by.epam.task1b.repository.storage.FigureStorage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,19 +10,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class SelectAllSortedByAngleToCoordinatesPlaneQuery<R, T> implements QuerySpecification<ArrayList<Figure>> {
+public class SelectAllDefaultSortedByIdQuery<R, T> implements QuerySpecification<ArrayList<Figure>> {
     static Logger logger = LogManager.getLogger();
     private Comparator<Figure> comparator;
 
-    public SelectAllSortedByAngleToCoordinatesPlaneQuery(Comparator<Figure> comparatorByAngle) {
-        this.comparator = comparatorByAngle;
+    public SelectAllDefaultSortedByIdQuery(Comparator<Figure> comparator) {
+        this.comparator = comparator;
+    }
+
+    public SelectAllDefaultSortedByIdQuery() {
     }
 
     @Override
     public ArrayList<Figure> executeQuery() {
         ArrayList<Figure> figureList = FigureStorage.getInstance().getFigureList();
         logger.debug("Before sort: " + figureList);
+        if (comparator == null) {
+            comparator = new CompareById();
+        }
         Collections.sort(figureList, comparator);
+
         logger.debug("After sort: " + figureList);
         return figureList;
     }

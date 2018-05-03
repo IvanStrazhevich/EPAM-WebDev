@@ -4,13 +4,19 @@ import by.epam.task1a.entity.Figure;
 
 import java.util.ArrayList;
 
-public class FigureObserver<T> implements AbstractObserver<Figure> {
+public class PlaneObserver<T> implements AbstractObserver<Figure> {
+    private static PlaneObserver instance;
+    private ArrayList<Figure> observableList = new ArrayList<>();
+    private DataUpdatable updater;
 
-    private ArrayList<Figure> observableList;
-    DataUpdatable updater;
-
-    public FigureObserver(DataUpdatable updater) {
+    private PlaneObserver(DataUpdatable updater) {
         this.updater = updater;
+    }
+    public static final PlaneObserver getInstance() {
+        if (instance == null) {
+            instance = new PlaneObserver(new PlaneDataUpdater());
+        }
+        return instance;
     }
 
     public void addObservable(Figure observable) {

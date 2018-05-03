@@ -1,9 +1,6 @@
 package by.epam.task1a.entity;
 
-import by.epam.task1b.registrar.FigureObservable;
-import by.epam.task1b.registrar.FigureEvent;
-import by.epam.task1b.registrar.AbstractObserver;
-import by.epam.task1b.registrar.FigureObserver;
+import by.epam.task1b.registrar.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +9,7 @@ import java.util.UUID;
 public class Figure implements FigureObservable {
     static Logger logger = LogManager.getLogger();
 
-    private FigureObserver figureObserver;
+    private PlaneObserver planeObserver;
     private long id;
 
     public Figure() {
@@ -25,20 +22,20 @@ public class Figure implements FigureObservable {
 
     @Override
     public void attach(AbstractObserver observer) {
-        this.figureObserver = (FigureObserver) observer;
-        ((FigureObserver) observer).addObservable(this);
+        this.planeObserver = (PlaneObserver) observer;
+        ((PlaneObserver) observer).addObservable(this);
     }
 
     @Override
     public void detach(AbstractObserver observer) {
-        this.figureObserver = (FigureObserver) observer;
-        ((FigureObserver) observer).removeObservable(this);
+        this.planeObserver = (PlaneObserver) observer;
+        ((PlaneObserver) observer).removeObservable(this);
     }
 
     @Override
     public void notifyObservers() {
-        if (figureObserver != null) {
-            figureObserver.handleEvent(new FigureEvent(this));
+        if (planeObserver != null) {
+            planeObserver.handleEvent(new FigureEvent(this));
         }
     }
 
@@ -50,12 +47,12 @@ public class Figure implements FigureObservable {
         Figure figure = (Figure) o;
 
         if (id != figure.id) return false;
-        return figureObserver != null ? figureObserver.equals(figure.figureObserver) : figure.figureObserver == null;
+        return planeObserver != null ? planeObserver.equals(figure.planeObserver) : figure.planeObserver == null;
     }
 
     @Override
     public int hashCode() {
-        int result = figureObserver != null ? figureObserver.hashCode() : 0;
+        int result = planeObserver != null ? planeObserver.hashCode() : 0;
         result = 31 * result + (int) (id ^ (id >>> 32));
         return result;
     }
@@ -63,9 +60,9 @@ public class Figure implements FigureObservable {
     @Override
     public String toString() {
         return "Figure { " +
-                "figureObserver = " + figureObserver +
+                "planeObserver = " + planeObserver +
                 ", id = " + id +
-                " }";
+                " } ";
     }
 
     public long getId() {
@@ -74,5 +71,13 @@ public class Figure implements FigureObservable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public PlaneObserver getPlaneObserver() {
+        return planeObserver;
+    }
+
+    public void setPlaneObserver(PlaneObserver planeObserver) {
+        this.planeObserver = planeObserver;
     }
 }
